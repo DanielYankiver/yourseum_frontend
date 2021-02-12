@@ -24,12 +24,20 @@ function Login({setCurrentUser, history}){
             setCurrentUser(user);
             history.push('/artwork')
          });    
+    }
 
+    function toggleForm(e){
+        if (e.target.textContent === "Login"){
+            e.target.textContent = "Sign Up"
+        } else {
+            e.target.textContent = "Login"
+        }
     }
 
     return (
         <div>
             <form onSubmit={handleLogin}>
+                <h1 onClick={(e)=>toggleForm(e)}>Login</h1>
                 <label 
                     htmlFor="username" 
                     placeholder="Enter Username"
@@ -42,6 +50,7 @@ function Login({setCurrentUser, history}){
                     value = {username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
+                <br></br>
                 <label 
                     htmlFor="password" 
                     placeholder="Enter Password"
@@ -54,6 +63,7 @@ function Login({setCurrentUser, history}){
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <br></br>
                 <input type="submit" />
             </form> 
         </div>
