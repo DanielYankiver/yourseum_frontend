@@ -1,8 +1,17 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({history}) {
+
+    function handleClick() {
+        history.push('/artwork')
+    }
+    
+
     return (
-        <Link to='/artwork'> YOURSEUM </Link>
+        <div className="header">
+            {/* <Link to='/artwork'> YOURSEUM </Link> */}
+            <h1 onClick={handleClick}>YOURSEUM</h1>
+        </div>
     );
 }
 

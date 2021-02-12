@@ -28,7 +28,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Header />
+      <Header history={props.history}/>
       <Switch >
         <Route exact path="/">
           <Login history={props.history} setCurrentUser={setCurrentUser}></Login>
