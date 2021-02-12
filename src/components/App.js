@@ -19,7 +19,10 @@ function App(props) {
       fetch("http://localhost:3001/arts")
       .then(r => r.json())
       .then(artworkArray => {
-        setArtworks(artworkArray);
+        const newArr = artworkArray.map((artwork) => {
+          return {...artwork, starred: false}
+        })
+        setArtworks(newArr);
       })
     }, []);
 
@@ -31,7 +34,7 @@ function App(props) {
           <Login history={props.history} setCurrentUser={setCurrentUser}></Login>
         </Route>
         <Route path="/artwork">
-          <ArtPage artworks={artworks} history={props.history} />
+          <ArtPage artworks={artworks} history={props.history} setArtworks={setArtworks}/>
         </Route>
         <Route path="/favorites">
           <h1>Welcome to your favorites</h1>
@@ -47,3 +50,4 @@ function App(props) {
 }
 
 export default withRouter(App);
+
