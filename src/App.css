@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, Helvetica, sans-serif; 
 }
 
 /* .App-logo {
@@ -38,12 +41,66 @@
 } */
 
 .header {
-  background-color: rgb(226, 172, 102);
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif; 
-  border-style: solid;
-  border-color: rgb(75, 43, 1);
-  border-width: 15px;
-  
-  
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* border-style: solid; */
 }
+
+.login-form-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://swall.teahub.io/photos/small/106-1061930_renaissance-painting-pain.jpg");
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.login-form{
+  background:rgba(0,0,0,0.9);
+  color: white;
+  border-radius: 0.9rem;
+  padding: 50px;
+}
+
+.submit-button {
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.login-h1{
+  margin: 15px;
+  padding-bottom: 20px;
+}
+
+.artpage{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  border-style: solid;
+}
+
+.semantic-card-list-div{
+  grid-area: 1 / 1 / 2 / 2; 
+  padding-right: 10px;
+}
+
+.favorites-list {
+  grid-area: 1 / 2 / 2 / 3;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: gray;
+  display: flex;
+  justify-content: center;
+}
+

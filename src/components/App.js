@@ -26,6 +26,10 @@ function App(props) {
       })
     }, []);
 
+    if (!currentUser){ 
+      return <h2 className="loading" style={{color:"red"}}>Loading Masterpieces... </h2>
+    }
+
   return (
     <div className="App">
       <Header history={props.history}/>

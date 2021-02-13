@@ -32,7 +32,7 @@ function ArtPage({artworks, history, setArtworks}){
     })
 
     return (
-        <div>
+        <div className="artpage">
             <ArtCollection artworks={artworks} handleFavorite={handleFavorite} onDeleteArt={handleDeleteArt}/>
             <ArtFavorites artworks={favoritedArtworks} handleFavorite={handleFavorite} />
         </div>

@@ -1,4 +1,5 @@
- import ArtCard from './ArtCard';
+ import { Card } from 'semantic-ui-react';
+import ArtCard from './ArtCard';
 
 function ArtCollection({artworks, handleFavorite, onDeleteArt}){
 
@@ -12,11 +13,11 @@ function ArtCollection({artworks, handleFavorite, onDeleteArt}){
     })
 
     return (
-        <div>
-            <ul>
-                <h1>Browse Artworks: </h1>
+        <div classsName="semantic-card-list-div">
+            <h1>Browse Artworks: </h1>
+            <Card.Group itemsPerRow={3}>
                 {artworkList}
-            </ul>
+            </Card.Group>
         </div>
     );
 }
