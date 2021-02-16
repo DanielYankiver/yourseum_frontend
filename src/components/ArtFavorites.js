@@ -10,22 +10,22 @@ function ArtFavorites({favArtworks, handleFavoriteListDel, history}){
         return {...f.art, fav_id: f.id}
     }).map((artwork) => {
         return (
-            <Card 
+            <Card id="art-card-info"
                 key={artwork.id}
                 image={artwork.image}
                 header={artwork.title}
                 meta={artwork.year} 
                 description={artwork.artist}
-                extra={<button onClick={()=>handleStarred(artwork)}> ⭐️ </button>}
+                extra={<button className="btn-star" onClick={()=>handleStarred(artwork)}> ⭐️ </button>}
             />
             );
     })
     
     return (
         <div className="favorites-list">
-            <ul>
-                <h1>Favorites: </h1>   
-                <button onClick={()=>history.push('/favorites')}>View Favorites</button>
+            <ul className="favorites-list-ul">
+                {/* <h1>Favorites: </h1>    */}
+                <button className="fav-button" onClick={()=>history.push('/favorites')}>Favorites</button>
                 {favArt}
             </ul>
         </div>

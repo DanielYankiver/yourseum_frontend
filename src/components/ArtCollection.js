@@ -16,7 +16,7 @@ function ArtCollection({artworks, handleFavorite, onDeleteArt, handleUnFavorite,
 
     return (
         <div className="semantic-card-list-div">
-            <h1>Browse Artworks: </h1>
+            {/* <h1>Welcome to Yourseum </h1> */}
             <Card.Group itemsPerRow={3}>
                 {artworkList}
             </Card.Group>

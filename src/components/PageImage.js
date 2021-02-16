@@ -19,11 +19,13 @@ function PageImage({favArtworks}){
     }
 
     return (
-        <div>
-            <button onClick={() => prevBtn()}> ⬅️ </button>  
-            <img src={favList[favImageCount].image} alt={favList[favImageCount].title}></img>
-            <button onClick={() => nextBtn()}> ➡️ </button>
+        <div className="outer-fav-div">
             <PageInfo artwork={favList[favImageCount]}/>
+            <div className="fav-image-div">
+                <button className="fav-image-btns" onClick={() => prevBtn()}>←</button>  
+                <img className="fav-image" src={favList[favImageCount].image} alt={favList[favImageCount].title}></img>
+                <button className="fav-image-btns" onClick={() => nextBtn()}>→</button>
+            </div>
         </div>
     );
 }

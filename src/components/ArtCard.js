@@ -24,19 +24,19 @@ function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArt
     
     const buttons = (
         <div>
-            <button onClick={(e)=>handleStarred(e)}> ⭐️ </button>
-            <button onClick={handleDelete}>🗑</button>
+            <button className="btn-star"onClick={(e)=>handleStarred(e)}> ⭐️ </button>
+            <button className="btn-del"onClick={handleDelete}>🗑</button>
         </div>
     )
 
     return (
-        <Card >
+        <Card className = "art-card">
             <Image height="350px" src={artwork.image} />
-            <Card.Content>
+            <Card.Content id="art-card-info">
                 <Card.Header>{artwork.title} - {artwork.artist}</Card.Header>
                 <Card.Meta><span>{artwork.year}</span></Card.Meta>
             </Card.Content>
-            <Card.Content extra>
+            <Card.Content extra id="art-card-extra">
                 {buttons}
             </Card.Content>
         </Card>

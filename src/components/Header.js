@@ -8,9 +8,9 @@ function Header({history}) {
     
 
     return (
-        <div className="header">
+        <div className="header-div">
             {/* <Link to='/artwork'> YOURSEUM </Link> */}
-            <h1 onClick={handleClick}>YOURSEUM</h1>
+            <h1 className="main-header" onClick={handleClick}>YOURSEUM</h1>
         </div>
     );
 }

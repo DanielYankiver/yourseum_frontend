@@ -3,49 +3,18 @@
   height: 100vh;
   width: 100vw;
   font-family: Arial, Helvetica, sans-serif; 
+  background-color: black;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-.header {
+.header-div {
   display: flex;
   justify-content: center;
   align-self: flex-end;
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
+  /* background-color: rgb(197, 197, 197); */
+  background-color: ivory;
+  padding: 10px;
   /* border-style: solid; */
 }
 
@@ -84,23 +53,116 @@ h1 {
 
 .artpage{
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
-  border-style: solid;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  padding-bottom: 5px;
+  /* border-style: solid; */
 }
 
 .semantic-card-list-div{
   grid-area: 1 / 1 / 2 / 2; 
-  padding-right: 10px;
+  padding-right: 50px;
+  padding-top: 40px;
+  background-color: black; 
+  margin-left: 50px;
+  /* border-radius: 15px; */
+  color: white;
+  overflow: auto;
 }
 
 .favorites-list {
   grid-area: 1 / 2 / 2 / 3;
-  border-style: solid;
-  border-radius: 15px;
-  border-color: gray;
+  /* border-style: solid; */
+  /* border-radius: 15px; */
+  /* border-color: gray; */
   display: flex;
   justify-content: center;
+  /* align-items: center; */
+  background-color: rgb(20, 20, 20); 
+  color: white;
+  overflow: auto;
+  
+}
+
+.favorites-list-ul {
+ padding: 0px;
+}
+
+.art-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 3px 8px 2px rgba(255,255,255,1);
+}
+
+.fav-button {
+  background: ivory;
+  color: black;
+  font-size: 20px;
+  margin: 25px;
+  padding: 10px;
+}
+
+.fav-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 1px 5px 1px rgba(255,255,255,1);
+}
+
+#art-card-info{
+  background-color: ivory;
+}
+
+#art-card-extra{
+  background-color: ivory;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-star{
+  background-color: ivory;
+  margin-right: 5px;
+  border-color: transparent;
+}
+
+.btn-del{
+  background-color: ivory;
+  border-color: transparent;
+}
+
+.fav-image-div{
+  grid-area: 2 / 1 / 3 / 2;
+  height: 60vh;
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+
+.fav-info {
+  grid-area: 1 / 1 / 2 / 2;
+  color: white;
+  justify-content: flex-start;
+}
+
+.outer-fav-div{
+  grid-area: 1 / 1 / 3 / 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 6fr;
+  gap: 0px 0px;
+  /* display: flex;
+  justify-content: center;
+  align-content: center; */
+}
+
+.fav-image-btns{
+  float: left;
+  background-color: black;
+  border-color: black;
+  color: rgb(75, 75, 75);
+  font-size: 100px;
 }
 

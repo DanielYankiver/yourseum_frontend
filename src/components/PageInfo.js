@@ -1,9 +1,8 @@
 function PageInfo({artwork}){
 
     return (
-        <div>
-            <h1>Info</h1>
-            <h2>{artwork.title}</h2>
+        <div className="fav-info">
+            <h1>{artwork.title} ({artwork.year}) - {artwork.artist}</h1>
         </div>
     );
 }
