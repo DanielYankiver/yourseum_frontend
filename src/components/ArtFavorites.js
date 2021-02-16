@@ -1,19 +1,22 @@
 import { Card, Icon } from 'semantic-ui-react';
 
-function ArtFavorites({artworks, handleFavorite}){
+function ArtFavorites({favArtworks, handleFavoriteListDel}){
 
     function handleStarred(artwork){
-        handleFavorite(artwork)
+        handleFavoriteListDel(artwork)
     }
 
-    const favArt = artworks.map((artwork) => {
+    const favArt = favArtworks.map((f)=>{
+        return {...f.art, fav_id: f.id}
+    }).map((artwork) => {
         return (
             <Card 
+                key={artwork.id}
                 image={artwork.image}
                 header={artwork.title}
                 meta={artwork.year} 
                 description={artwork.artist}
-                extra={artwork.starred ? <button onClick={()=>handleStarred(artwork)}> ⭐️ </button> : <button onClick={()=>handleStarred(artwork)}> ☆ </button>}
+                extra={<button onClick={()=>handleStarred(artwork)}> ⭐️ </button>}
             />
             );
     })

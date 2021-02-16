@@ -15,7 +15,7 @@ function Login({setCurrentUser, history}){
             username: username,
             password: password
         }
-        console.log(loginUser)
+        // console.log(loginUser)
         fetch('http://localhost:3001/login',{
             method: 'POST',
             headers: {
@@ -28,7 +28,6 @@ function Login({setCurrentUser, history}){
             setCurrentUser(user);
             history.push('/artwork')
          }); 
-         
     }
 
     function toggleForm(e){

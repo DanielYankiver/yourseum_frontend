@@ -5,10 +5,12 @@ import '../App.css';
 import Header from './Header';
 import Login from './Login';
 import ArtPage from './ArtPage';
+import FavPage from './FavPage';
 
 function App(props) {
   const [ currentUser,setCurrentUser ] = useState(null);
   const [ artworks, setArtworks ] = useState([]);
+  const [ favArtworks, setFavArtworks ] = useState([]);
     
   useEffect(() => {
       fetch("http://localhost:3001/me")
@@ -19,10 +21,11 @@ function App(props) {
       fetch("http://localhost:3001/arts")
       .then(r => r.json())
       .then(artworkArray => {
-        const newArr = artworkArray.map((artwork) => {
-          return {...artwork, starred: false}
-        })
-        setArtworks(newArr);
+        // const newArr = artworkArray.map((artwork) => {
+        //   return {...artwork, starred: false}
+        // })
+        // setArtworks(newArr);
+        setArtworks(artworkArray);
       })
     }, []);
 
@@ -38,11 +41,17 @@ function App(props) {
           <Login history={props.history} setCurrentUser={setCurrentUser}></Login>
         </Route>
         <Route path="/artwork">
-          <ArtPage artworks={artworks} history={props.history} setArtworks={setArtworks}/>
+          <ArtPage 
+            artworks={artworks} 
+            history={props.history} 
+            favArtworks={favArtworks} 
+            setFavArtworks={setFavArtworks} 
+            setArtworks={setArtworks} 
+            currentUser={currentUser}
+          />
         </Route>
         <Route path="/favorites">
-          <h1>Welcome to your favorites</h1>
-          //FavPage Component 
+          <FavPage />
         </Route>
         <Route path="/fullscreen">
           <h1>Welcome to fullscreen</h1>

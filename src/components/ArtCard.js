@@ -1,26 +1,35 @@
 import { Card, Image } from 'semantic-ui-react';
+import { useState } from 'react';
 
-function ArtCard({artwork, handleFavorite, onDeleteArt}){
+function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite}){
 
     const { id, title, artist, image, year } = artwork
-
-    function handleStarred(){
-        handleFavorite(artwork)
+    const [ starred, setStarred ] = useState(false)
+    
+    function handleStarred(e){
+        handleFavorite(artwork)  
+        setStarred(!starred)  
     }
 
+    function handleUnStarred(e){
+        handleUnFavorite(artwork)
+        setStarred(!starred)
+    }
+    
     function handleDelete(){
        fetch(`http://localhost:3001/arts/${id}`, {
            method: "DELETE",
        })
-       onDeleteArt(id)  
+       onDeleteArt(id)
     }
     
     const buttons = (
         <div>
-            {artwork.starred ? <button onClick={handleStarred}> ⭐️ </button> : <button onClick={handleStarred}> ☆ </button>}
+            {starred ? <button onClick={(e)=>handleUnStarred(e)}> ⭐️ </button> : <button onClick={(e)=>handleStarred(e)}> ⭐️ </button>}
             <button onClick={handleDelete}>🗑</button>
         </div>
     )
+
     return (
         <Card >
             <Image height="350px" src={artwork.image} />
