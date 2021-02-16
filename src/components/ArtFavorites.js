@@ -1,6 +1,6 @@
 import { Card, Icon } from 'semantic-ui-react';
 
-function ArtFavorites({favArtworks, handleFavoriteListDel}){
+function ArtFavorites({favArtworks, handleFavoriteListDel, history}){
 
     function handleStarred(artwork){
         handleFavoriteListDel(artwork)
@@ -25,6 +25,7 @@ function ArtFavorites({favArtworks, handleFavoriteListDel}){
         <div className="favorites-list">
             <ul>
                 <h1>Favorites: </h1>   
+                <button onClick={()=>history.push('/favorites')}>View Favorites</button>
                 {favArt}
             </ul>
         </div>

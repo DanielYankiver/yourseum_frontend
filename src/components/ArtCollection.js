@@ -1,7 +1,7 @@
 import { Card } from 'semantic-ui-react';
 import ArtCard from './ArtCard';
 
-function ArtCollection({artworks, handleFavorite, onDeleteArt, handleUnFavorite}){
+function ArtCollection({artworks, handleFavorite, onDeleteArt, handleUnFavorite, favArtworks}){
 
     const artworkList = artworks.map((artwork) => {
         return <ArtCard 
@@ -10,6 +10,7 @@ function ArtCollection({artworks, handleFavorite, onDeleteArt, handleUnFavorite}
                     handleFavorite={handleFavorite}
                     onDeleteArt={onDeleteArt}
                     handleUnFavorite={handleUnFavorite}
+                    favArtworks={favArtworks}
                 />
     })
 

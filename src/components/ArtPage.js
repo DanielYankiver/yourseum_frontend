@@ -3,18 +3,19 @@ import ArtCollection from './ArtCollection';
 import ArtFavorites from './ArtFavorites';
 
 function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, favArtworks}){
-    // console.log(artworks)
 
     useEffect(()=>{
         const favoritedList = 
         fetch('http://localhost:3001/favorites')
             .then(r => r.json())
             .then(favList => {
-                // const newFavArtList = favList.map((f) => f.art)
-                // setFavArtworks(newFavArtList)
-                setFavArtworks(favList)
+                if (favList.errors){
+                    favList.errors.forEach((error) => {return(<h1 style={{color: "red"}}>{error}</h1>)})
+                } else {
+                    setFavArtworks(favList) 
+                }
             })
-    }, []) //we think it should be favArtworks
+    }, []) 
     
     function handleFavorite(artwork){
 
@@ -24,18 +25,6 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             art_id: id, 
             starred: false 
         }
-        // if (artwork.starred === false) {
-        //     artwork.starred = true
-        // } else {
-        //     artwork.starred = false
-        // }
-        // const updatedArr = artworks.map((art) => {
-        //     if (art.id === artwork.id){
-        //         return artwork;
-        //     }
-        //     return art;
-        // })
-        // setArtworks(updatedArr)
 
         fetch('http://localhost:3001/favorites', {
             method: "POST",
@@ -44,8 +33,8 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             },
             body: JSON.stringify(newFav)
         })
-        .then((r) => r.json())
-        .then(newFavorite => setFavArtworks([...favArtworks, newFavorite]))
+            .then((r) => r.json())
+            .then(newFavorite => setFavArtworks([...favArtworks, newFavorite]))
     }
 
     function handleUnFavorite(artwork){
@@ -74,8 +63,8 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
 
     return (
         <div className="artpage">
-            <ArtCollection artworks={artworks} handleFavorite={handleFavorite} onDeleteArt={handleDeleteArt} handleUnFavorite={handleUnFavorite}/>
-            <ArtFavorites favArtworks={favArtworks} handleFavoriteListDel={handleFavoriteListDel}/>
+            <ArtCollection artworks={artworks} handleFavorite={handleFavorite} onDeleteArt={handleDeleteArt} handleUnFavorite={handleUnFavorite} favArtworks={favArtworks}/>
+            <ArtFavorites favArtworks={favArtworks} handleFavoriteListDel={handleFavoriteListDel} history={history}/>
         </div>
     );
 }

@@ -21,10 +21,6 @@ function App(props) {
       fetch("http://localhost:3001/arts")
       .then(r => r.json())
       .then(artworkArray => {
-        // const newArr = artworkArray.map((artwork) => {
-        //   return {...artwork, starred: false}
-        // })
-        // setArtworks(newArr);
         setArtworks(artworkArray);
       })
     }, []);

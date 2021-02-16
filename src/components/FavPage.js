@@ -1,6 +1,5 @@
 import PageTitle from './PageTitle';
 import PageImage from './PageImage';
-import PageInfo from './PageInfo';
 import { useState, useEffect } from 'react';
 
 
@@ -22,7 +21,6 @@ function FavPage(){
         <div>
             <PageTitle />
             <PageImage favArtworks={favArtworks}/>
-            <PageInfo />
         </div>
     );
 }

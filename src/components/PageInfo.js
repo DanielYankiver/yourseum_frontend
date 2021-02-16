@@ -1,7 +1,10 @@
-function PageInfo(){
+function PageInfo({artwork}){
 
     return (
-        <h1>Info:</h1>
+        <div>
+            <h1>Info</h1>
+            <h2>{artwork.title}</h2>
+        </div>
     );
 }
 
