@@ -153,6 +153,7 @@ h1 {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 6fr;
   gap: 0px 0px;
+  color: ivory;
   /* display: flex;
   justify-content: center;
   align-content: center; */
@@ -164,5 +165,12 @@ h1 {
   border-color: black;
   color: rgb(75, 75, 75);
   font-size: 100px;
+  cursor: grab; 
 }
+
+.fav-image-btns:focus {
+  outline:0;
+}
+
+
 

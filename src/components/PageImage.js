@@ -7,7 +7,7 @@ function PageImage({favArtworks}){
     const [favImageCount, setFavImageCount] = useState(0);
 
     if(favList.length === 0){
-        return <h1>There is nothing in your favorites list!</h1>
+        return <h1 style={{color:'ivory'}}>There is nothing in your favorites list!</h1>
     }
 
     function nextBtn(){
