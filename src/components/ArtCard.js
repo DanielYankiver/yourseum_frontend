@@ -31,9 +31,10 @@ function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArt
 
     return (
         <Card className = "art-card">
-            <Image height="350px" src={artwork.image} />
+            <Image height="70%" src={artwork.image} />
             <Card.Content id="art-card-info">
-                <Card.Header>{artwork.title} - {artwork.artist}</Card.Header>
+                <Card.Header>{artwork.title}</Card.Header>
+                <Card.Description>{artwork.artist}</Card.Description>
                 <Card.Meta><span>{artwork.year}</span></Card.Meta>
             </Card.Content>
             <Card.Content extra id="art-card-extra">

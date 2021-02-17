@@ -26,6 +26,9 @@ function PageImage({favArtworks}){
                 <img className="fav-image" src={favList[favImageCount].image} alt={favList[favImageCount].title}></img>
                 <button className="fav-image-btns" onClick={() => nextBtn()}>→</button>
             </div>
+            <div className="fav-image-description-div">
+                <h4 className="fav-image-description">{favList[favImageCount].description}</h4>
+            </div>      
         </div>
     );
 }

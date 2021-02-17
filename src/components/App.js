@@ -26,7 +26,7 @@ function App(props) {
     }, []);
 
     if (!currentUser){ 
-      return <h2 className="loading" style={{color:"red"}}>Loading Masterpieces... </h2>
+      return <h2 className="loading">Loading Masterpieces... </h2>
     }
 
   return (
