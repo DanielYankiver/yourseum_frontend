@@ -3,55 +3,62 @@ import { useState , useEffect} from 'react';
 import logo from '../logo.svg';
 import '../App.css';
 import Header from './Header';
-import Login from './Login';
+import AuthForm from './AuthForm';
 import ArtPage from './ArtPage';
 import FavPage from './FavPage';
 
 function App(props) {
+
   const [ currentUser,setCurrentUser ] = useState(null);
   const [ artworks, setArtworks ] = useState([]);
   const [ favArtworks, setFavArtworks ] = useState([]);
     
   useEffect(() => {
-      fetch("http://localhost:3001/me")
-        .then((r) => r.json())
-        .then((user) => {
-          setCurrentUser(user);
+      const token = localStorage.getItem("token");
+      if (token) {
+        fetch("http://localhost:3001/me",{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((r) => r.json())
+          .then((user) => {
+            setCurrentUser(user);
+          });
+        fetch("http://localhost:3001/arts")
+        .then(r => r.json())
+        .then(artworkArray => {
+          setArtworks(artworkArray);
         });
-      fetch("http://localhost:3001/arts")
-      .then(r => r.json())
-      .then(artworkArray => {
-        setArtworks(artworkArray);
-      })
+      }
     }, []);
 
-    if (!currentUser){ 
-      return <h2 className="loading">Loading Masterpieces... </h2>
+    function handleLogOut(){
+      localStorage.removeItem("token")
+      setCurrentUser(null);
+      props.history.push('/');
     }
 
   return (
     <div className="App">
-      <Header history={props.history}/>
+      <Header history={props.history} currentUser={currentUser} handleLogOut={handleLogOut}/>
       <Switch >
         <Route exact path="/">
-          <Login history={props.history} setCurrentUser={setCurrentUser}></Login>
+          <AuthForm history={props.history} setCurrentUser={setCurrentUser}></AuthForm>
         </Route>
         <Route path="/artwork">
-          <ArtPage 
+          {currentUser ? <ArtPage 
             artworks={artworks} 
             history={props.history} 
             favArtworks={favArtworks} 
             setFavArtworks={setFavArtworks} 
             setArtworks={setArtworks} 
             currentUser={currentUser}
-          />
+            setCurrentUser={setCurrentUser}
+          />: null}
         </Route>
         <Route path="/favorites">
-          <FavPage />
-        </Route>
-        <Route path="/fullscreen">
-          <h1>Welcome to fullscreen</h1>
-          //Fullscreen Component 
+          <FavPage currentUser={currentUser}/>
         </Route>
       </Switch>
     </div>

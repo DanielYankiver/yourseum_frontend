@@ -1,7 +1,5 @@
-// import { Link } from 'react-router-dom';
-
-function Header({history}) {
-
+function Header({history, currentUser, handleLogOut}) {
+    
     function handleClick() {
         history.push('/artwork')
     }
@@ -9,8 +7,9 @@ function Header({history}) {
 
     return (
         <div className="header-div">
-            {/* <Link to='/artwork'> YOURSEUM </Link> */}
             <h1 className="main-header" onClick={handleClick}>YOURSEUM</h1>
+            { currentUser ? <button className="log-out" onClick={handleLogOut}> Logout </button>
+            : null}
         </div>
     );
 }

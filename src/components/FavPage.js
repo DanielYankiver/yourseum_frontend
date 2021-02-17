@@ -3,7 +3,7 @@ import PageImage from './PageImage';
 import { useState, useEffect } from 'react';
 
 
-function FavPage(){
+function FavPage({currentUser}){
     const [ favArtworks, setFavArtworks ] = useState([])
 
     useEffect(()=>{
@@ -11,9 +11,8 @@ function FavPage(){
         fetch('http://localhost:3001/favorites')
             .then(r => r.json())
             .then(favList => {
-                // const newFavArtList = favList.map((f) => f.art)
-                // setFavArtworks(newFavArtList)
-                setFavArtworks(favList)
+                const myFavList = favList.filter((f) => f.user.id === currentUser.id)
+                setFavArtworks(myFavList)
             })
     }, [])
     

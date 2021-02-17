@@ -24,7 +24,6 @@ function ArtFavorites({favArtworks, handleFavoriteListDel, history}){
     return (
         <div className="favorites-list">
             <ul className="favorites-list-ul">
-                {/* <h1>Favorites: </h1>    */}
                 <button className="fav-button" onClick={()=>history.push('/favorites')}>Favorites</button>
                 {favArt}
             </ul>

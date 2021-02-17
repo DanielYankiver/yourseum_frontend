@@ -4,7 +4,6 @@ import { useState } from 'react';
 function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArtworks}){
 
     const { id, title, artist, image, year } = artwork
-    // const [ starred, setStarred ] = useState(false)
     
     function handleStarred(e){
         if (favArtworks.find((f) => f.art_id === artwork.id)){
@@ -31,7 +30,7 @@ function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArt
 
     return (
         <Card className = "art-card">
-            <Image height="400vh" src={artwork.image} />
+            <Image className="art-card-image" src={artwork.image} />
             <Card.Content id="art-card-info">
                 <Card.Header>{artwork.title}</Card.Header>
                 <Card.Description>{artwork.artist}</Card.Description>
@@ -45,21 +44,3 @@ function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArt
 }
 
 export default ArtCard;
-
-        // <div>
-        //     <h1>{artwork.title}</h1>
-        //     <h2>{artwork.artist}</h2>
-        //     <h3>{artwork.year}</h3>
-        //     <img src={artwork.image}/>
-        //     {artwork.starred ? <button onClick={handleStarred}> ⭐️ </button> : <button onClick={handleStarred}> ☆ </button>}
-        //     <br/>
-        //     <button onClick={handleDelete}>Delete🗑</button>
-        // </div>
-
-        // <Card 
-        //     image={artwork.image}
-        //     header={artwork.title}
-        //     meta={artwork.year} 
-        //     description={artwork.artist}
-        //     extra={buttons}
-        // />

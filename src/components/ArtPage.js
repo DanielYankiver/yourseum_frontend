@@ -2,20 +2,22 @@ import { useEffect } from 'react';
 import ArtCollection from './ArtCollection';
 import ArtFavorites from './ArtFavorites';
 
-function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, favArtworks}){
+function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, favArtworks, setCurrentUser}){
 
     useEffect(()=>{
-        const favoritedList = 
         fetch('http://localhost:3001/favorites')
             .then(r => r.json())
             .then(favList => {
+                // console.log(favList)
+                console.log(currentUser)
                 if (favList.errors){
                     favList.errors.forEach((error) => {return(<h1 style={{color: "red"}}>{error}</h1>)})
                 } else {
-                    setFavArtworks(favList) 
+                    const myFavList = favList.filter((f) => f.user.id === currentUser.id)
+                    setFavArtworks(myFavList) 
                 }
             })
-    }, []) 
+    },[])
     
     function handleFavorite(artwork){
 
@@ -25,7 +27,6 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             art_id: id, 
             starred: false 
         }
-
         fetch('http://localhost:3001/favorites', {
             method: "POST",
             headers: {
@@ -34,7 +35,9 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             body: JSON.stringify(newFav)
         })
             .then((r) => r.json())
-            .then(newFavorite => setFavArtworks([...favArtworks, newFavorite]))
+            .then(newFavorite => {
+                setFavArtworks([...favArtworks, newFavorite])
+            })
     }
 
     function handleUnFavorite(artwork){
