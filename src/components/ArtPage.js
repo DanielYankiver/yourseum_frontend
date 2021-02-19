@@ -5,7 +5,7 @@ import ArtFavorites from './ArtFavorites';
 function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, favArtworks, setCurrentUser}){
 
     useEffect(()=>{
-        fetch('${process.env.REACT_APP_RAILS_URL}/favorites')
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites`)
             .then(r => r.json())
             .then(favList => {
                 // console.log(favList)
@@ -27,7 +27,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             art_id: id, 
             starred: false 
         }
-        fetch('${process.env.REACT_APP_RAILS_URL}/favorites', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
