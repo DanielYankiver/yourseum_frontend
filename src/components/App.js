@@ -16,7 +16,7 @@ function App(props) {
   useEffect(() => {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch("http://localhost:3001/me",{
+        fetch("https://mighty-sea-97245.herokuapp.com/me",{
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -25,7 +25,7 @@ function App(props) {
           .then((user) => {
             setCurrentUser(user);
           });
-        fetch("http://localhost:3001/arts")
+        fetch("https://mighty-sea-97245.herokuapp.com/arts")
         .then(r => r.json())
         .then(artworkArray => {
           setArtworks(artworkArray);

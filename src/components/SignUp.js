@@ -11,7 +11,7 @@ function SignUp({setCurrentUser, history}) {
             username: username,
             password: password
         }
-        fetch('http://localhost:3001/signup',{
+        fetch('https://mighty-sea-97245.herokuapp.com/signup',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

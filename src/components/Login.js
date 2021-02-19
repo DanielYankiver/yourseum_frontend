@@ -11,7 +11,7 @@ function Login({setCurrentUser, history}){
             username: username,
             password: password
         }
-        fetch('http://localhost:3001/login',{
+        fetch('https://mighty-sea-97245.herokuapp.com/login',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

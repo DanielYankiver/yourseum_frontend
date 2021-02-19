@@ -5,7 +5,7 @@ import ArtFavorites from './ArtFavorites';
 function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, favArtworks, setCurrentUser}){
 
     useEffect(()=>{
-        fetch('http://localhost:3001/favorites')
+        fetch('https://mighty-sea-97245.herokuapp.com/favorites')
             .then(r => r.json())
             .then(favList => {
                 // console.log(favList)
@@ -27,7 +27,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             art_id: id, 
             starred: false 
         }
-        fetch('http://localhost:3001/favorites', {
+        fetch('https://mighty-sea-97245.herokuapp.com/favorites', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
 
     function handleUnFavorite(artwork){
         const delFav = favArtworks.filter((f) => f.art_id === artwork.id)[0]
-        fetch(`http://localhost:3001/favorites/${delFav.id}`, {
+        fetch(`https://mighty-sea-97245.herokuapp.com/favorites/${delFav.id}`, {
            method: "DELETE",
        })
        const updatedFavList = favArtworks.filter((f) => f.art_id !== artwork.id)
@@ -51,7 +51,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
 
     function handleFavoriteListDel(artwork){
         console.log(artwork.fav_id)
-        fetch(`http://localhost:3001/favorites/${artwork.fav_id}`, {
+        fetch(`https://mighty-sea-97245.herokuapp.com/favorites/${artwork.fav_id}`, {
            method: "DELETE",
        })
        const updatedFavList = favArtworks.filter((f) => f.art_id !== artwork.id)
@@ -60,7 +60,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
     }
     
     //***** DElETE FUNCTION (commented out for go live) */
-    
+
     // function handleDeleteArt(id){
     //     const updatedArtArray = artworks.filter((artwork) => artwork.id !== id)
     //     setArtworks(updatedArtArray)
