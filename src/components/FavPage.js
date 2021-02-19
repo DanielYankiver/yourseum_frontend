@@ -8,7 +8,7 @@ function FavPage({currentUser}){
 
     useEffect(()=>{
         const favoritedList = 
-        fetch('https://mighty-sea-97245.herokuapp.com/favorites')
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites`)
             .then(r => r.json())
             .then(favList => {
                 const myFavList = favList.filter((f) => f.user.id === currentUser.id)

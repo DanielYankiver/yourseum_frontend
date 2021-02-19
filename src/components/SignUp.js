@@ -11,7 +11,7 @@ function SignUp({setCurrentUser, history}) {
             username: username,
             password: password
         }
-        fetch('https://mighty-sea-97245.herokuapp.com/signup',{
+        fetch(`${process.env.REACT_APP_RAILS_URL}/signup`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

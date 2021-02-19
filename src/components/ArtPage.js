@@ -5,7 +5,7 @@ import ArtFavorites from './ArtFavorites';
 function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, favArtworks, setCurrentUser}){
 
     useEffect(()=>{
-        fetch('https://mighty-sea-97245.herokuapp.com/favorites')
+        fetch('${process.env.REACT_APP_RAILS_URL}/favorites')
             .then(r => r.json())
             .then(favList => {
                 // console.log(favList)
@@ -27,7 +27,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
             art_id: id, 
             starred: false 
         }
-        fetch('https://mighty-sea-97245.herokuapp.com/favorites', {
+        fetch('${process.env.REACT_APP_RAILS_URL}/favorites', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
 
     function handleUnFavorite(artwork){
         const delFav = favArtworks.filter((f) => f.art_id === artwork.id)[0]
-        fetch(`https://mighty-sea-97245.herokuapp.com/favorites/${delFav.id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites/${delFav.id}`, {
            method: "DELETE",
        })
        const updatedFavList = favArtworks.filter((f) => f.art_id !== artwork.id)
@@ -51,7 +51,7 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
 
     function handleFavoriteListDel(artwork){
         console.log(artwork.fav_id)
-        fetch(`https://mighty-sea-97245.herokuapp.com/favorites/${artwork.fav_id}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/favorites/${artwork.fav_id}`, {
            method: "DELETE",
        })
        const updatedFavList = favArtworks.filter((f) => f.art_id !== artwork.id)
