@@ -1,7 +1,7 @@
 import { Card, Image } from 'semantic-ui-react';
 import { useState } from 'react';
 
-function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArtworks}){
+function ArtCard({artwork, handleFavorite, handleUnFavorite, favArtworks}){
 
     const { id, title, artist, image, year } = artwork
     
@@ -13,18 +13,20 @@ function ArtCard({artwork, handleFavorite, onDeleteArt, handleUnFavorite, favArt
         }
     }
 
-    function handleDelete(){
-       fetch(`http://localhost:3001/arts/${id}`, {
-           method: "DELETE",
-       })
-       onDeleteArt(id)
-    }
+    //***** DElETE FUNCTION (commented out for go live) */
+
+    // function handleDelete(){
+    //    fetch(`http://localhost:3001/arts/${id}`, {
+    //        method: "DELETE",
+    //    })
+    //    onDeleteArt(id)
+    // }
     
     
     const buttons = (
         <div>
             <button className="btn-star"onClick={(e)=>handleStarred(e)}> ⭐️ </button>
-            <button className="btn-del"onClick={handleDelete}>🗑</button>
+            {/* <button className="btn-del"onClick={handleDelete}>🗑</button> */}
         </div>
     )
 

@@ -58,15 +58,17 @@ function ArtPage({artworks, history, setArtworks, currentUser, setFavArtworks, f
        setFavArtworks(updatedFavList)
 
     }
-
-    function handleDeleteArt(id){
-        const updatedArtArray = artworks.filter((artwork) => artwork.id !== id)
-        setArtworks(updatedArtArray)
-    }
+    
+    //***** DElETE FUNCTION (commented out for go live) */
+    
+    // function handleDeleteArt(id){
+    //     const updatedArtArray = artworks.filter((artwork) => artwork.id !== id)
+    //     setArtworks(updatedArtArray)
+    // }
 
     return (
         <div className="artpage">
-            <ArtCollection artworks={artworks} handleFavorite={handleFavorite} onDeleteArt={handleDeleteArt} handleUnFavorite={handleUnFavorite} favArtworks={favArtworks}/>
+            <ArtCollection artworks={artworks} handleFavorite={handleFavorite} handleUnFavorite={handleUnFavorite} favArtworks={favArtworks}/>
             <ArtFavorites favArtworks={favArtworks} handleFavoriteListDel={handleFavoriteListDel} history={history}/>
         </div>
     );
